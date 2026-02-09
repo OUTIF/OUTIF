@@ -2,13 +2,13 @@
 <h3 align="center">💻 Digital Creator | 🛠️ Developer | 🎨 Tech + Creativity</h3>
 
 <p align="center">
-I’m an indie developer who loves building useful and creative digital projects.  
+I’m an Iraqi developer who loves building useful and creative digital projects.  
 I enjoy turning ideas into real applications — from planning and design all the way to solving real-life problems with code.
 </p>
 
 <p align="center">
-  <a href="https://github.com/OUTIF?tab=followers">
-    <img src="https://custom-icon-badges.demolab.com/github/followers/OUTIF?color=236ad3&label=FOLLOW&logo=person-add&logoColor=white&style=for-the-badge" />
+  <a href="https://www.linkedin.com/in/yousif-hussein-4ab234355/">
+    <img src="https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/>
   </a>
   <a href="mailto:yuosefh2005@gmail.com">
     <img src="https://img.shields.io/badge/Email-Contact%20Me-D14836?style=for-the-badge&logo=gmail&logoColor=white"/>
@@ -32,7 +32,7 @@ I enjoy turning ideas into real applications — from planning and design all th
 ### 🧰 Languages & Tools
 
 <p>
-  <img src="https://skillicons.dev/icons?i=js,ts,react,nodejs,python,cpp,html,css,git,linux,vscode" />
+  <img src="https://skillicons.dev/icons?i=js,python,c,cpp,html,css" />
 </p>
 
 ---
