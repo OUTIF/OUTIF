@@ -65,10 +65,13 @@ const navMenu   = document.getElementById('navMenu');
 
 hamburger.addEventListener('click', (e) => {
     e.stopPropagation();
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-    // Prevent body scroll when menu is open
-    document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+    // Use requestAnimationFrame for smoother animation
+    requestAnimationFrame(() => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        // Prevent body scroll when menu is open
+        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+    });
 });
 
 // Close menu when a nav link is tapped
@@ -91,9 +94,12 @@ navMenu.addEventListener('touchend', (e) => {
 }, { passive: true });
 
 function closeMenu() {
-    hamburger.classList.remove('active');
-    navMenu.classList.remove('active');
-    document.body.style.overflow = '';
+    // Use requestAnimationFrame for smoother animation
+    requestAnimationFrame(() => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+        document.body.style.overflow = '';
+    });
 }
 
 // ==================== //
