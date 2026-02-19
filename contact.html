@@ -2,11 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - Yousif Hussein</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <title>Contact - Yousif Al-Gburi</title>
+    
+    <!-- iOS Mobile Web App Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Contact - Yousif">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#111827" media="(prefers-color-scheme: dark)">
+    
+    <!-- Android/Chrome Meta Tags -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-TileColor" content="#2563eb">
     <link rel="icon" type="image/png" href="images/logo.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- FOUC Prevention: apply saved theme BEFORE first paint -->
+    <script>
+        (function(){
+            var t=localStorage.getItem('theme')||'light';
+            document.documentElement.setAttribute('data-theme',t);
+            document.documentElement.classList.add('no-transition');
+        })();
+    </script>
 </head>
 <body>
     <!-- Navigation -->
@@ -43,11 +63,12 @@
     <section class="contact-section">
         <div class="container">
             <div class="contact-wrapper">
+
                 <!-- Contact Info -->
                 <div class="contact-info">
                     <h2>Contact Information</h2>
                     <p>Let's connect! I'm always open to discussing new things, creative ideas, or opportunities.</p>
-                    
+
                     <div class="info-items">
                         <div class="info-item">
                             <div class="info-icon">
@@ -55,7 +76,7 @@
                             </div>
                             <div class="info-text">
                                 <h3>Location</h3>
-                                <p>Eskişehir, Turkey</p>
+                                <p>Eskisehir, Turkey</p>
                             </div>
                         </div>
 
@@ -65,7 +86,7 @@
                             </div>
                             <div class="info-text">
                                 <h3>Email</h3>
-                                <p>yuosefh2005@gmail.com</p>
+                                <p>algburiyusuf99@gmail.com</p>
                             </div>
                         </div>
 
@@ -75,7 +96,7 @@
                             </div>
                             <div class="info-text">
                                 <h3>University</h3>
-                                <p>Eskişehir Osmangazi University</p>
+                                <p>Eskisehir Osmangazi University</p>
                             </div>
                         </div>
 
@@ -97,22 +118,22 @@
                     <form id="contactForm" class="contact-form">
                         <div class="form-group">
                             <label for="name">Your Name</label>
-                            <input type="text" id="name" name="name" placeholder="Yousif Hussein" required>
+                            <input type="text" id="name" name="name" placeholder="Yousif Hussein" autocomplete="name" required>
                         </div>
 
                         <div class="form-group">
                             <label for="email">Your Email</label>
-                            <input type="email" id="email" name="email" placeholder="yusuf@example.com" required>
+                            <input type="email" id="email" name="email" placeholder="yusuf@example.com" autocomplete="email" inputmode="email" required>
                         </div>
 
                         <div class="form-group">
                             <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" placeholder="Project Collaboration" required>
+                            <input type="text" id="subject" name="subject" placeholder="Project Collaboration" autocomplete="off" required>
                         </div>
 
                         <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="6" placeholder="Your message here..." required></textarea>
+                            <textarea id="message" name="message" rows="6" placeholder="Your message here..." autocomplete="off" required></textarea>
                         </div>
 
                         <button type="submit" class="btn btn-primary">
@@ -122,6 +143,7 @@
 
                     <div id="formMessage" class="form-message"></div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -131,22 +153,107 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-info">
-                    <h3>Yousif Hussein</h3>
+                    <h3>Yousif Al-Gburi</h3>
                     <p>Computer Engineering Student | ESOGU</p>
                 </div>
                 <div class="footer-links">
-                    <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://github.com/OUTIF" target="_blank"><i class="fab fa-github"></i></a>
                     <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="mailto:yousif@example.com"><i class="fas fa-envelope"></i></a>
+                    <a href="mailto:algburiyusuf99@gmail.com"><i class="fas fa-envelope"></i></a>
                     <a href="https://www.instagram.com/_.yusu1f/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Yousif Hussein. All rights reserved.</p>
+                <p>&copy; 2026 Yousif Al-Gburi. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- EmailJS SDK — must load BEFORE script.js -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <!-- Main script (theme, nav, animations, etc.) -->
     <script src="script.js"></script>
+
+    <!-- EmailJS contact form handler -->
+    <script>
+        (function () {
+            const form       = document.getElementById('contactForm');
+            const messageDiv = document.getElementById('formMessage');
+
+            if (!form || !messageDiv) {
+                console.error('Contact form or message div not found.');
+                return;
+            }
+
+            if (typeof emailjs === 'undefined') {
+                console.error('EmailJS SDK not loaded.');
+                messageDiv.textContent = 'Email service unavailable. Please try again later.';
+                messageDiv.className = 'form-message error';
+                return;
+            }
+
+            // Initialise EmailJS with your public key
+            emailjs.init('k5w0XFL2xGykKbg9o');
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const name    = document.getElementById('name').value.trim();
+                const email   = document.getElementById('email').value.trim();
+                const subject = document.getElementById('subject').value.trim();
+                const message = document.getElementById('message').value.trim();
+
+                // Validation
+                if (!name || !email || !subject || !message) {
+                    messageDiv.textContent = 'Please fill in all fields.';
+                    messageDiv.className = 'form-message error';
+                    return;
+                }
+
+                const submitBtn       = form.querySelector('button[type="submit"]');
+                const originalBtnHTML = submitBtn.innerHTML;
+
+                // Show loading state
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                submitBtn.disabled  = true;
+                messageDiv.textContent = '';
+                messageDiv.className   = 'form-message';
+
+                const SERVICE_ID  = 'service_le8xfcl';
+                const TEMPLATE_ID = 'template_wytkzcn';
+
+                const templateParams = {
+                    from_name  : name,
+                    name       : name,
+                    from_email : email,
+                    email      : email,
+                    reply_to   : email,
+                    subject    : subject,
+                    message    : message,
+                    to_name    : 'Yousif'
+                };
+
+                emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams)
+                    .then(function (response) {
+                        console.log('EmailJS SUCCESS:', response);
+                        messageDiv.textContent = 'Thank you! Your message has been sent successfully.';
+                        messageDiv.className   = 'form-message success';
+                        form.reset();
+                    })
+                    .catch(function (error) {
+                        console.error('EmailJS ERROR:', error);
+                        const errorText = error?.text || error?.message || 'Unknown error';
+                        messageDiv.textContent = 'Something went wrong: ' + errorText;
+                        messageDiv.className   = 'form-message error';
+                    })
+                    .finally(function () {
+                        submitBtn.innerHTML = originalBtnHTML;
+                        submitBtn.disabled  = false;
+                    });
+            });
+        })();
+    </script>
+
 </body>
 </html>

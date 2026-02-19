@@ -45,12 +45,31 @@ html {
     scroll-behavior: smooth;
 }
 
+/* ==================== */
+/* FOUC Prevention      */
+/* ==================== */
+
+/* Applied by JS inline script in <head> BEFORE first paint.
+   Blocks all transitions so the correct theme shows instantly.
+   Removed 50ms later so normal transitions resume. */
+.no-transition,
+.no-transition *,
+.no-transition *::before,
+.no-transition *::after {
+    transition: none !important;
+    animation: none !important;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--bg-primary);
     color: var(--text-primary);
     line-height: 1.6;
-    transition: var(--transition);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* iOS momentum scrolling */
+    -webkit-overflow-scrolling: touch;
+    /* Prevent horizontal scroll on mobile */
+    overflow-x: hidden;
 }
 
 a {
@@ -64,6 +83,21 @@ img {
     display: block;
 }
 
+/* Prevent iOS blue tap highlight on interactive elements */
+a, button, .btn, .theme-toggle, .hamburger, .filter-btn, .nav-menu a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Ensure minimum touch target size for accessibility (44x44px) */
+.theme-toggle,
+.hamburger {
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /* ==================== */
 /* Container */
 /* ==================== */
@@ -72,6 +106,9 @@ img {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    /* Mobile safe area support */
+    padding-left: max(20px, env(safe-area-inset-left));
+    padding-right: max(20px, env(safe-area-inset-right));
 }
 
 /* ==================== */
@@ -85,6 +122,10 @@ img {
     top: 0;
     z-index: 1000;
     transition: var(--transition);
+    /* iOS safe area for notched phones */
+    padding-top: env(safe-area-inset-top);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
 }
 
 .navbar .container {
@@ -264,6 +305,12 @@ img {
     align-items: center;
     gap: 8px;
     font-size: 1rem;
+    /* Mobile touch target - minimum 44x44px */
+    min-height: 44px;
+    min-width: 44px;
+    /* Better touch feedback */
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .btn-primary {
@@ -292,6 +339,17 @@ img {
 .hero-image {
     display: flex;
     justify-content: center;
+}
+
+.profile-image {
+    width: 300px;
+    height: 300px;
+    max-width: 80vw;
+    max-height: 80vw;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--accent-color);
+    box-shadow: 0 20px 40px var(--shadow-lg);
 }
 
 .image-placeholder {
@@ -757,9 +815,17 @@ img {
     border-radius: 8px;
     background-color: var(--bg-secondary);
     color: var(--text-primary);
-    font-size: 1rem;
+    font-size: 16px; /* MUST be 16px minimum — prevents iOS auto-zoom on focus */
     font-family: inherit;
     transition: var(--transition);
+    /* iOS styling reset */
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 8px; /* Re-declare after appearance reset */
+    /* Mobile optimizations */
+    min-height: 44px; /* Minimum touch target size */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    width: 100%; /* Full width on mobile */
 }
 
 .form-group input:focus,
@@ -801,6 +867,10 @@ img {
     background-color: var(--bg-secondary);
     padding: 3rem 0 1rem;
     margin-top: auto;
+    /* iOS safe area for home indicator */
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
 }
 
 .footer-content {
@@ -942,7 +1012,23 @@ img {
         transition: 0.3s;
         box-shadow: 0 10px 27px var(--shadow);
         padding: 2rem 0;
+        /* iOS safe area for notch/home indicator */
+        padding-bottom: calc(2rem + env(safe-area-inset-bottom));
         z-index: 999;
+    }
+
+    .nav-menu li {
+        padding: 0.2rem 0;
+    }
+
+    .nav-menu a {
+        display: block;
+        padding: 0.8rem 2rem; /* Large touch target */
+        font-size: 1.1rem;
+        min-height: 44px; /* iOS/Android minimum touch target */
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .nav-menu.active {
@@ -976,6 +1062,8 @@ img {
     .btn {
         width: 100%;
         justify-content: center;
+        min-height: 48px; /* Larger touch target on mobile */
+        font-size: 1.1rem; /* Slightly larger text for readability */
     }
 
     .skills-grid {
@@ -1018,6 +1106,8 @@ img {
 @media (max-width: 480px) {
     .navbar .container {
         padding: 0.8rem 12px;
+        padding-left: calc(12px + env(safe-area-inset-left));
+        padding-right: calc(12px + env(safe-area-inset-right));
     }
 
     .nav-brand img {
@@ -1052,5 +1142,138 @@ img {
 
     .social-icons {
         justify-content: center;
+    }
+    
+    /* Mobile form improvements */
+    .form-group input,
+    .form-group textarea {
+        font-size: 16px; /* Prevents iOS zoom on focus */
+        padding: 14px 16px;
+    }
+    
+    .contact-wrapper {
+        gap: 2rem;
+    }
+    
+    .page-header {
+        padding-top: calc(80px + env(safe-area-inset-top));
+    }
+    
+    /* Better spacing on small screens */
+    .container {
+        padding-left: calc(20px + env(safe-area-inset-left));
+        padding-right: calc(20px + env(safe-area-inset-right));
+    }
+}
+
+/* ==================== */
+/* Extra Small Screens  */
+/* ==================== */
+
+@media (max-width: 360px) {
+    .hero-text h1 {
+        font-size: 1.6rem;
+    }
+
+    .hero-text h2 {
+        font-size: 1.1rem;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+    }
+
+    .page-header h1 {
+        font-size: 2rem;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+    }
+
+    .skill-card {
+        padding: 1.2rem;
+    }
+
+    .skill-card i {
+        font-size: 2.2rem;
+    }
+
+    .contact-form-wrapper h2,
+    .contact-info h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* ==================== */
+/* iOS Specific Fixes   */
+/* ==================== */
+
+/* Fix for iOS input styling */
+input[type="text"],
+input[type="email"],
+textarea {
+    -webkit-appearance: none;
+    border-radius: 8px;
+}
+
+/* Fix for iOS button styling */
+button, .btn {
+    -webkit-appearance: none;
+}
+
+/* Smooth font rendering on all Apple devices */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==================== */
+/* Additional Mobile Optimizations */
+/* ==================== */
+
+/* Prevent text size adjustment on iOS */
+html {
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+/* Better scrolling on mobile */
+* {
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Improve touch response on mobile */
+button, a, .btn, .theme-toggle, .hamburger {
+    touch-action: manipulation;
+}
+
+/* Prevent pull-to-refresh on mobile (optional - can be removed if you want it) */
+body {
+    overscroll-behavior-y: contain;
+}
+
+/* Better focus states for mobile */
+input:focus,
+textarea:focus,
+button:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Improve image loading on mobile */
+img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
+/* Better mobile menu animation */
+@media (max-width: 768px) {
+    .nav-menu {
+        will-change: transform;
+        transform: translateZ(0);
     }
 }

@@ -10,7 +10,7 @@ I enjoy turning ideas into real applications — from planning and design all th
   <a href="https://www.linkedin.com/in/yousif-hussein-4ab234355/">
     <img src="https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/>
   </a>
-  <a href="mailto:yuosefh2005@gmail.com">
+  <a href="mailto:algburiyusuf99@gmail.com">
     <img src="https://img.shields.io/badge/Email-Contact%20Me-D14836?style=for-the-badge&logo=gmail&logoColor=white"/>
   </a>
   <a href="https://www.instagram.com/_.yusu1f/?hl=en">

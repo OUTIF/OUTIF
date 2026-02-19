@@ -2,13 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yousif Hussein - Computer Engineering Student</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <title>Yousif Al-Gburi - Computer Engineering Student</title>
+    
+    <!-- iOS Mobile Web App Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Yousif Al-Gburi">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#111827" media="(prefers-color-scheme: dark)">
+    
+    <!-- Android/Chrome Meta Tags -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-TileColor" content="#2563eb">
     <link rel="icon" type="image/png" href="images/logo.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- FOUC Prevention: apply saved theme BEFORE first paint -->
+    <script>
+        (function(){
+            var t = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', t);
+            document.documentElement.classList.add('no-transition');
+        })();
+    </script>
 </head>
 <body>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
@@ -36,10 +57,10 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1 class="fade-in">Hi, I'm <span class="highlight">Yousif Hussein</span></h1>
+                    <h1 class="fade-in">Hi, I'm <span class="highlight">Yousif Al-Gburi</span></h1>
                     <h2 class="fade-in-delay">Computer Engineering Student</h2>
                     <p class="fade-in-delay-2">
-                        Iraqi student pursuing Computer Engineering at Eskişehir Osmangazi University (ESOGU) in Turkey. 
+                        Iraqi student pursuing Computer Engineering at Eskişehir Osmangazi University (ESOGU) in Turkey.
                         Passionate about software development, problem-solving, and building innovative solutions.
                     </p>
                     <div class="hero-buttons fade-in-delay-3">
@@ -48,9 +69,7 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <div class="image-placeholder">
-                        <i class="fas fa-user"></i>
-                    </div>
+                    <img src="images/my picture.jpeg" alt="Photo of Yousif Hussein" class="profile-image">
                 </div>
             </div>
         </div>
@@ -63,13 +82,12 @@
             <div class="about-content">
                 <div class="about-text">
                     <p>
-                        I'm a dedicated Computer Engineering student at ESOGU, combining my Iraqi heritage 
-                        with international academic experience in Turkey. My journey in technology is driven 
-                        by curiosity and a desire to create meaningful software solutions.
+                        I'm a Computer Engineering student at ESOGU, originally from Iraq and currently living in Turkey.
+                        I'm still in the learning stage and enjoy exploring programming, web development, and new technologies.
                     </p>
                     <p>
-                        Currently focusing on web development, algorithms, and software engineering principles 
-                        while building practical projects that solve real-world problems.
+                        Right now I'm focused on building small projects, practicing the basics, and improving step by step
+                        so I can become a better developer over time.
                     </p>
                 </div>
                 <div class="education-info">
@@ -111,18 +129,14 @@
                     <i class="fab fa-python"></i>
                     <h3>Python</h3>
                 </div>
- 
                 <div class="skill-card">
                     <i class="fas fa-code"></i>
                     <h3>C++</h3>
                 </div>
-                
-
                 <div class="skill-card">
                     <i class="fas fa-code"></i>
                     <h3>C</h3>
                 </div>
-
             </div>
         </div>
     </section>
@@ -132,22 +146,23 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-info">
-                    <h3>Yousif Hussein</h3>
+                    <h3>Yousif Al-Gburi</h3>
                     <p>Computer Engineering Student | ESOGU</p>
                 </div>
                 <div class="footer-links">
-                    <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://github.com/OUTIF" target="_blank"><i class="fab fa-github"></i></a>
                     <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="mailto:yousif@example.com"><i class="fas fa-envelope"></i></a>
+                    <a href="mailto:algburiyusuf99@gmail.com"><i class="fas fa-envelope"></i></a>
                     <a href="https://www.instagram.com/_.yusu1f/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Yousif Hussein. All rights reserved.</p>
+                <p>&copy; 2026 Yousif Al-Gburi. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
+
 </body>
 </html>
